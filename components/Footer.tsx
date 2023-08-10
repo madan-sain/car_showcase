@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { footerLinks } from "@/constants";
 
 const Footer = () => {
   return (
-    <footer className="flex Flex-col text-black-100 mt-5 border-t border-gray-100">
+    <footer className="flex flex-col text-black-100 mt-5 border-t border-gray-100">
       <div className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10">
         <div className="flex flex-col justify-start items-start gap-6">
           <Image
@@ -17,6 +18,33 @@ const Footer = () => {
             CarHub 2023 <br />
             all rights reserved &copy;
           </p>
+        </div>
+        <div className="footer__links">
+          {footerLinks.map((Links) => (
+            <div key={Links.title} className="footer__link">
+              <h3 className="font-bold">{Links.title}</h3>
+              {Links.links.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.url}
+                  className="text-gray-500"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10">
+        <p>@2023 all rights reserved</p>
+        <div className="footer__copyrights-link">
+          <Link href="/" className="text-gray-500">
+            private policy
+          </Link>
+          <Link href="/" className="text-gray-500">
+            private policy
+          </Link>
         </div>
       </div>
     </footer>

@@ -14,8 +14,8 @@ export default function Home() {
         <div className='home__filters'>
           <SearchBar />
           <div className="home__filter-container">
-            <CustomFilters title="fule" />
-            <CustomFilters title="years" />
+            {/* <CustomFilters title="fule" />
+            <CustomFilters title="years" /> */}
           </div>
         </div>
       </div>

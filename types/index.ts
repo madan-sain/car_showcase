@@ -7,3 +7,9 @@ export interface CreateButtonprops{
     btntype?: "button" | "submit"
 
 }
+
+
+export interface SearcMaunfacherprops{
+    maunfacher: string;
+    setmaunfacher: (maunfacher: string) => void;
+}

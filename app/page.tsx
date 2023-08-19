@@ -8,7 +8,7 @@ export default async function Home({ searchParams }:HomeProps) {
     maunfacher: searchParams.maunfacher || "",
     year: searchParams.year || 2022,
     fuel: searchParams.fuel || "",
-    limit: searchParams.limit || 12,
+    limit: searchParams.limit || 6,
     model: searchParams.model || "",
   })
   const isDataEmpty =  !Array.isArray(allCars) || allCars.length < 1 || !allCars;

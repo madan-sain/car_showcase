@@ -28,3 +28,15 @@ export interface CarProps {
   transmission: string;
   year: number;
 }
+
+export interface FilterProps {
+  maunfacher?: string;
+  year?: number;
+  model?: string;
+  limit?: number;
+  fuel?: string;
+}
+
+export interface HomeProps {
+  searchParams: FilterProps;
+}

@@ -1,4 +1,4 @@
-import { CarProps } from "@/types";
+import { CarProps, FilterProps } from "@/types";
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
     const basePricePerDay = 50; // Base rental price per day in dollars
@@ -30,14 +30,33 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
     return `${url}`;
   } 
 
-export async function fetchCars() {
+export async function fetchCars(filters: FilterProps) {
+  const { maunfacher, year, model, limit, fuel } = filters;
     const headers  =  {
         'X-RapidAPI-Key': '76e48b50e1msh0d6991b3160c051p1a3cedjsnec19c7bc577c',
 		'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
     }
-    const responce  =  await fetch('https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla',{ headers: headers})
+    const responce  =  await fetch(`https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${maunfacher}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,{ headers: headers})
 
     const result  =  await responce .json();
     
     return result;
 }
+
+
+// export async function fetchCars(filters: FilterProps) {
+//   const { manufacturer, year, model, limit, fuel } = filters;
+
+//   // Set the required headers for the API request
+//   const headers: HeadersInit = {
+//     "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY || "76e48b50e1msh0d6991b3160c051p1a3cedjsnec19c7bc577c",
+//     "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
+//   };
+
+//   // Set the required headers for the API request
+//   const response = await fetch(
+//     `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
+//     {
+//       headers: headers,
+//     }
+//   )}

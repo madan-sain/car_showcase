@@ -4,13 +4,7 @@ import { fetchCars } from '@/utils'
 import Image from 'next/image'
 
 export default async function Home({ searchParams }:HomeProps) {
-  const allCars = await fetchCars({
-    maunfacher: searchParams.maunfacher || "",
-    year: searchParams.year || 2022,
-    fuel: searchParams.fuel || "",
-    limit: searchParams.limit || 6,
-    model: searchParams.model || "",
-  })
+  const allCars = await fetchCars()
   const isDataEmpty =  !Array.isArray(allCars) || allCars.length < 1 || !allCars;
     return (
     <main className="overflow-hidden">
